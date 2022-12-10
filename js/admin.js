@@ -79,7 +79,7 @@ function displayTable(){
         <td>R ${item.price}</td>
         <td>
         <!-- Button trigger modal -->
-        <button type="button" class="edit-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleMod">
+        <button type="button" id="${item.id}" class="edit-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleMod">
           Edit
         </button>
         <!-- Modal -->
@@ -92,19 +92,19 @@ function displayTable(){
                     </div>
                     <div class="modal-body">
                         <label for="product" class="form-label">EDIT PRODUCT NAME</label>
-                        <input type="text" id="" class="product-name-edit form-control" aria-describedby="passwordHelpBlock" value="${item.productName}">
+                        <input type="text" id="${item.id}" class="product-name-edit form-control" aria-describedby="passwordHelpBlock">
 
                         <label for="url" class="form-label">EDIT Image URL</label>
-                        <input type="text" id="" class="img-url-edit form-control" aria-describedby="passwordHelpBlock" value="${item.image}">
+                        <input type="url" id="${item.id}" class="img-url-edit form-control" aria-describedby="passwordHelpBlock">
 
                         <label for="inputPassword5" class="form-label">EDIT BRAND NAME</label>
-                        <input type="text" id="" class="brand-name-edit form-control" aria-describedby="passwordHelpBlock" value="${item.brandName}">
+                        <input type="text" id="${item.id}" class="brand-name-edit form-control" aria-describedby="passwordHelpBlock">
 
                         <label for="inputPassword5" class="form-label">EDIT TYPE</label>
-                        <input type="text" id="" class="product-type-edit form-control" aria-describedby="passwordHelpBlock" value="${item.type}">
+                        <input type="text" id="${item.id}" class="product-type-edit form-control" aria-describedby="passwordHelpBlock">
 
                         <label for="inputPassword5" class="form-label">EDIT PRICE</label>
-                        <input type="number" id="" class="product-price-edit form-control" aria-describedby="passwordHelpBlock" value="${item.price}">
+                        <input type="number" id="${item.id}" class="product-price-edit form-control" aria-describedby="passwordHelpBlock">
                     </div>
                     <div class="modal-footer">
                     <button type="button" id="${item.id}" class="edit-product-btn btn btn-primary">Click to edit</button>
@@ -180,7 +180,7 @@ let emptyArray = [];
     })
         emptyArray.push(newArray3)
         console.log(emptyArray)
-    emptyArray = []
+        emptyArray = []
     })
 
     let deleteButton = document.querySelectorAll('.delete-btn');
@@ -210,24 +210,35 @@ let emptyArray = [];
         let productTypeEdit = document.querySelector('.product-type-edit').value;
         let productPriceEdit = document.querySelector('.product-price-edit').value; 
         
-let modalButton = document.querySelectorAll('.modal-btn');
+let modalButton = document.querySelectorAll('.edit-btn');
 modalButton.forEach((modalButtons)=>{
     modalButtons.addEventListener('click', (e)=>{
         e.preventDefault(); 
         console.log(coffeeProducts[modalButtons.id, 1])
     })
 })
+
+//Constructor function for edit button
+function EditProduct(productNameEdit, typeEdit, imageURLedit, productPriceEdit, brandNameEdit){
+    this.productNameEdit = productNameEdit;
+    this.typeEdit = typeEdit;
+    this.imageURLedit = imageURLedit;
+    this.productPriceEdit = productPriceEdit;
+    this.brandNameEdit = brandNameEdit;
+}
+
 editButton.forEach((editButtons)=>{
     editButtons.addEventListener('click', (e)=>{
         e.preventDefault();
-        console.log(coffeeProducts[editButtons.id -1]);
-        
+        let FirstItem = new EditProduct(productNameEdit , productTypeEdit, imageURLedit, productPriceEdit, brandNameEdit)
+        // console.log(coffeeProducts[editButtons.id, 1]);
+        console.log(FirstItem); 
         // function updateItem(id){
             // const product = coffeeProducts.splice(id -1, 1);
             // const item = product[0]
             // console.log(item)
             // Object.keys(coffeeProducts).forEach((key) => {
-                // console.log(key, coffeeProducts[key].id);
+            //     console.log(coffeeProducts[key]);
             // })
             // item.productName = productNameEdit
             // console.log(Object.keys(item))

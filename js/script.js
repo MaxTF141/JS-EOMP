@@ -80,11 +80,20 @@ display();
 let emptyArray = [];
 localStorage.setItem('checkout', JSON.stringify(emptyArray))
 let cardButton = document.querySelectorAll('.card-btn');
-Object.keys(cardButton).forEach((cardBtn)=>{
+cardButton.forEach((cardBtn)=>{
     cardBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        emptyArray.push(coffeeProducts[video])
-        console.log(checkoutItems)
-        localStorage.setItem('checkout', JSON.stringify(emptyArray))
+
+        Object.keys(coffeeProducts).forEach((key) => {
+            // console.log(coffeeProducts[key]);
+            emptyArray.push(coffeeProducts[key])
+        })
+
+
+
+        console.log(emptyArray)
+        // console.log(checkoutItems)
+        // localStorage.setItem('checkout', JSON.stringify(emptyArray))
     })
 })
+
