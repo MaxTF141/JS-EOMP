@@ -189,13 +189,13 @@ let emptyArray = [];
             e.preventDefault();
 
             console.log(coffeeProducts[delButton.id -1]);
-                // coffeeProducts.splice([delButton.id -1], 1);
+                coffeeProducts.splice([delButton.id -1], 1);
                 localStorage.setItem('products', JSON.stringify(coffeeProducts))
 
     
             // function deleteItem(item){
             // }
-            // location.reload()
+            location.reload()
             // deleteItem();
     
             

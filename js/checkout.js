@@ -19,7 +19,7 @@ let purchaseItem = document.querySelector('#Purchase');
 purchaseItem.addEventListener('click', ()=> {
   alert('Thank you for your purchase');
   emptyArray = [];
-  localStorage.setItem('checkout', JSON.stringify(  Page));
+  localStorage.setItem('checkout', JSON.stringify(emptyArray));
   location.reload();
   // console.log(checkoutPage);
 })

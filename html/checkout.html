@@ -10,13 +10,29 @@
 </head>
 <body>
     <header>
-      <nav class="navbar justify-content-center">
-        <ul class="nav-list gap-5 d-flex ">
-            <a href="../index.html"><li class="text-dark">PRODUCTS</li></a>
-            <a href="checkout.html"><li class="text-dark">CHECKOUT</li></a>
-            <a href="admin.html"><li class="text-dark">ADMIN</li></a>
-        </ul>
-    </nav>
+      <nav class="navbar bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="../assets/img/logo.png" alt="" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li><a href="../index.html">PRODUCTS</a></li>
+                    <li><a href="./checkout.html">CHECKOUT</a></li>
+                    <li><a href="./admin.html">ADMIN</a></li>
+                    </ul>
+                <form class="d-flex mt-3" role="search">
+                </form>
+            </div>
+            </div>
+        </div>
+        </nav>        
 </header>
     <main>
       <table class="table">
