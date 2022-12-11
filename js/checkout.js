@@ -30,5 +30,7 @@ let checkoutButton = document.querySelector('.checkout-btn');
 checkoutButton.addEventListener('click', (e)=>{
   alert(`-R ${sum}`)
   alert('Thank you for your Purchase')
-  
+  checkoutItems = [];
+  localStorage.setItem('checkout', JSON.stringify(checkoutItems))
+  location.reload();
 })
