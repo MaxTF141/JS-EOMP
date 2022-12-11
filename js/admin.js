@@ -72,8 +72,7 @@ function displayTable(){
     coffeeProducts.forEach((item)=>{
         tbody.innerHTML += `
         <tr>
-        <th scope="row">${item.id}</th>
-        <th>${item.brandName}</th>
+        <th scope="row">${item.brandName}</th>
         <td>${item.productName}</td>
         <td>${item.type}</td>
         <td>R ${item.price}</td>
@@ -122,6 +121,7 @@ function displayTable(){
 }
 displayTable();
 
+//Adding an item 
 let createButton = document.querySelector('.create-btn');
 createButton.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -141,79 +141,66 @@ createButton.addEventListener('click', (e)=>{
         }
         )
         localStorage.setItem('products', JSON.stringify(coffeeProducts));
+        location.reload()
 })
 
 //Sorting and Filtering
-let emptyArray = [];
-//
+
+//Filtering 
+function filter(){
     let filterPrice1 = document.querySelector('.filter-price1')
     filterPrice1.addEventListener('click', (e)=>{
         e.preventDefault();
-        var newArray1 = coffeeProducts.filter(function (price1){
-        return price1.price <= 99;
+        let newArray = coffeeProducts.filter(price1 => price1.price >=0 && price1.price <= 99)
+        localStorage.setItem('products', JSON.stringify(newArray));
+        console.log(newArray)
+        location.reload();
     })
-    emptyArray.push(newArray1)
-    console.log(emptyArray)
-    // displayTable();
-    // localStorage.setItem('products', JSON.stringify(coffeeProducts));
-    emptyArray = [];
-    display()
-    })
-//
     let filterPrice2 = document.querySelector('.filter-price2')
     filterPrice2.addEventListener('click', (e)=>{
         e.preventDefault();
-        var newArray2 = coffeeProducts.filter(function (price2){
-        return price2.price >= 100 && price2.price <= 149;
+        // localStorage.removeItem("products");
+        let newArray2 = coffeeProducts.filter(price2 => price2.price >= 100 && price2.price <= 149)
+        localStorage.setItem('products', JSON.stringify(newArray2))
+        console.log(newArray2)
+        location.reload();
     })
-        emptyArray.push(newArray2)
-        console.log(emptyArray)
-        emptyArray = []
-    })
-
-//
     let filterPrice3 = document.querySelector('.filter-price3')
     filterPrice3.addEventListener('click', (e)=>{
         e.preventDefault();
-        var newArray3 = coffeeProducts.filter(function (price3){
-        return price3.price >= 150 && price3.price <= 250;
+        // localStorage.removeItem("products");
+        let newArray3 = coffeeProducts.filter(price3 => price3.price >= 150 && price3.price <= 250)
+        localStorage.setItem('products', JSON.stringify(newArray3))
+        console.log(newArray3)
+        location.reload();
     })
-        emptyArray.push(newArray3)
-        console.log(emptyArray)
-        emptyArray = []
-    })
-
-    let deleteButton = document.querySelectorAll('.delete-btn');
-    deleteButton.forEach((delButton)=>{
-        delButton.addEventListener('click', (e)=>{
-            e.preventDefault();
-
-            console.log(coffeeProducts[delButton.id -1]);
-                coffeeProducts.splice([delButton.id -1], 1);
-                localStorage.setItem('products', JSON.stringify(coffeeProducts))
-
+}
+filter()
     
-            // function deleteItem(item){
-            // }
-            location.reload()
-            // deleteItem();
-    
-            
-        })})
-        // deleteItem()
+let deleteButton = document.querySelectorAll('.delete-btn');
+deleteButton.forEach((delButton)=>{
+    delButton.addEventListener('click', (e)=>{
+        e.preventDefault();
+        console.log(coffeeProducts[delButton.id -1]);
+        coffeeProducts.splice([delButton.id -1], 1);
+        localStorage.setItem('products', JSON.stringify(coffeeProducts))
+        location.reload()
         
-        let editButton = document.querySelectorAll('.edit-product-btn');
-        let productNameEdit = document.querySelector('.product-name-edit').value;
-        
-        let imageURLedit = document.querySelector('.img-url-edit').value;
-        let brandNameEdit = document.querySelector('.brand-name-edit').value;
-        let productTypeEdit = document.querySelector('.product-type-edit').value;
-        let productPriceEdit = document.querySelector('.product-price-edit').value; 
+    })})
+
+let editButton = document.querySelectorAll('.edit-product-btn');
+let productNameEdit = document.querySelector('.product-name-edit').value;
+
+let imageURLedit = document.querySelector('.img-url-edit').value;
+let brandNameEdit = document.querySelector('.brand-name-edit').value;
+let productTypeEdit = document.querySelector('.product-type-edit').value;
+let productPriceEdit = document.querySelector('.product-price-edit').value; 
         
 let modalButton = document.querySelectorAll('.edit-btn');
 modalButton.forEach((modalButtons)=>{
     modalButtons.addEventListener('click', (e)=>{
-        e.preventDefault(); 
+        e.preventDefault();
+        console.log(e.currentTarget)
         console.log(coffeeProducts[modalButtons.id, 1])
     })
 })
@@ -230,31 +217,7 @@ function EditProduct(productNameEdit, typeEdit, imageURLedit, productPriceEdit, 
 editButton.forEach((editButtons)=>{
     editButtons.addEventListener('click', (e)=>{
         e.preventDefault();
+        
         let FirstItem = new EditProduct(productNameEdit , productTypeEdit, imageURLedit, productPriceEdit, brandNameEdit)
-        // console.log(coffeeProducts[editButtons.id, 1]);
         console.log(FirstItem); 
-        // function updateItem(id){
-            // const product = coffeeProducts.splice(id -1, 1);
-            // const item = product[0]
-            // console.log(item)
-            // Object.keys(coffeeProducts).forEach((key) => {
-            //     console.log(coffeeProducts[key]);
-            // })
-            // item.productName = productNameEdit
-            // console.log(Object.keys(item))
-            // localStorage.setItem('products', JSON.stringify(coffeeProducts))
-            // localStorage.setItem('products', JSON.stringify(coffeeProducts))
-        // }
-        // updateItem()
-        // location.reload()
-        // deleteItem();
-
-        // function editItem(id){
-        //     console.log(id)
-        //     // coffeeProducts.productName = productNameEdit;
-        //     // localStorage.setItem('products', JSON.stringify(coffeeProducts))
-        // }
-        // location.reload()
-        // editItem();
-
     })})

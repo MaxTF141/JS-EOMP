@@ -81,3 +81,8 @@ li a:hover {
 /* fbeed9 */
 /* fbdfb3 */
 
+@media screen and (max-width: 300px) {
+    .table{
+        
+    }
+}
